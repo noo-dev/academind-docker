@@ -1,0 +1,5 @@
+"running goals-backend container with live 
+update capability and keeping logs"
+
+---
+docker run --name goals-backend -p 80:80  --rm -d -v goals-logs:/app/logs -v $(pwd)/backend:/app/ -v /app/node_modules --network goals-net goals-node
