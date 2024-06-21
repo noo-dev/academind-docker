@@ -3,3 +3,6 @@ update capability and keeping logs"
 
 ---
 docker run --name goals-backend -p 80:80  --rm -d -v goals-logs:/app/logs -v $(pwd)/backend:/app/ -v /app/node_modules --network goals-net goals-node
+
+"backend container with mongo credentials via env vars"
+docker run -p 8082:80 --name goals-backend -e MONGODB_USERNAME=noo -e MONGODB_PASSWORD=noopass123 goals-app
