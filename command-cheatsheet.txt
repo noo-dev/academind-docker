@@ -6,3 +6,8 @@ docker run --name goals-backend -p 80:80  --rm -d -v goals-logs:/app/logs -v $(p
 
 "backend container with mongo credentials via env vars"
 docker run -p 8082:80 --name goals-backend -e MONGODB_USERNAME=noo -e MONGODB_PASSWORD=noopass123 goals-app
+
+
+"run frontend container with live update"
+cd frontend &&
+docker run -p 3000:3000 --rm --name=goals-frontend -v $(pwd)/src:/app/src goals-react
