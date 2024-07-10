@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mongodb:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=noo
+      - MONGO_INITDB_ROOT_PASSWORD=noopass123
+    volumes:
+      - mongodata:/data/db
+    image: mongo
+
+  backend:
+    build: ./backend
+    depends_on:
+      - mongodb
+    env_file:
+      - ./env/backend.env
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+    - 8082:80
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - 3000:3000
+    image: goals-react
+
+volumes:
+  mongodata:
+  logs:
