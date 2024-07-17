@@ -1,0 +1,15 @@
+========================
+BUILDING FIRST UTILITY CONTAINER
+========================
+
+docker build -t node-util .
+
+
+=================================
+  RUN ON `node-util` container `npm init -y` 
+  command and reflect `app` folder inside 
+  container to currend working directory
+=================================
+
+docker run -it -v $(pwd):/app node-util npm init -y
+
