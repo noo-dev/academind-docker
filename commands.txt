@@ -13,3 +13,9 @@ docker build -t node-util .
 
 docker run -it -v $(pwd):/app node-util npm init -y
 
+
+==================================
+RUNNING COMPOSE AFTER REFACTORING 
+UTIL CONTAINER TO DOCKER COMPOSE
+==================================
+docker-compose run --rm  npm init
